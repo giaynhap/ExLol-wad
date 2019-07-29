@@ -7,52 +7,28 @@ using System.Text;
 
 namespace ExportWadLol.IO.WAD
 {
-    /// <summary>
-    /// Represents an entry in a <see cref="WADFile"/>
-    /// </summary> 
+
     public class WADEntry : IComparable<WADEntry>
     {
-        /// <summary>
-        /// Hash of the <see cref="Name"/> of this <see cref="WADEntry"/>
-        /// </summary>
+     
         public ulong XXHash { get; private set; }
 
-        /// <summary>
-        /// Compressed Size of <see cref="Data"/>
-        /// </summary>
+
         public uint CompressedSize { get; internal set; }
 
-        /// <summary>
-        /// Uncompressed Size of <see cref="Data"/>
-        /// </summary>
         public uint UncompressedSize { get; internal set; }
 
-        /// <summary>
-        /// Type of this <see cref="WADEntry"/>
-        /// </summary>
+
         public EntryType Type { get; private set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public ushort Unknown1 { get; set; }
 
-        /// <summary>
-        /// SHA256 Checksum of <see cref="Data"/>
-        /// </summary>
-        /// <remarks>
-        /// Will be <see cref="null"/> if the version of the <see cref="WADFile"/> which it was read from is not 2.0
-        /// Only first 8 bytes of the original 32 byte checksum
-        /// </remarks>
+
         public byte[] SHA { get; internal set; }
 
         private string _fileRedirection;
 
-        /// <summary>
-        /// File to load instead of this <see cref="WADEntry"/>
-        /// </summary>
-        /// <remarks>Will be <see cref="null"/> if <see cref="Type"/> isn't <see cref="EntryType.FileRedirection"/></remarks>
-        public string FileRedirection
+       public string FileRedirection
         {
             get => this._fileRedirection;
             set
@@ -74,31 +50,15 @@ namespace ExportWadLol.IO.WAD
             }
         }
 
-        /// <summary>
-        /// Offset to the <see cref="WADEntry"/> data
-        /// </summary>
+     
         internal uint _dataOffset;
 
-        /// <summary>
-        /// Whether this <see cref="WADEntry"/> is contained in a <see cref="WADFile"/> more than one time
-        /// </summary>
         internal bool _isDuplicated;
 
-        /// <summary>
-        /// New data replacing original data of this <see cref="WADEntry"/>.
-        /// </summary>
         internal byte[] _newData;
 
         internal readonly WADFile _wad;
-
-        /// <summary>
-        /// Initializes a new <see cref="WADEntry"/>
-        /// </summary>
-        /// <param name="wad"><see cref="WADFile"/> this new entry belongs to.</param>
-        /// <param name="xxHash">The XXHash of this new entry.</param>
-        /// <param name="data">Data of this new entry.</param>
-        /// <param name="compressedEntry">Whether the data needs to be ZStandard compressed inside WAD</param>
-        public WADEntry(WADFile wad, ulong xxHash, byte[] data, bool compressedEntry)
+         public WADEntry(WADFile wad, ulong xxHash, byte[] data, bool compressedEntry)
         {
             this._wad = wad;
             this.XXHash = xxHash;
@@ -106,12 +66,6 @@ namespace ExportWadLol.IO.WAD
             this.EditData(data);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="wad"></param>
-        /// <param name="xxHash"></param>
-        /// <param name="fileRedirection"></param>
         public WADEntry(WADFile wad, ulong xxHash, string fileRedirection)
         {
             this._wad = wad;
@@ -120,12 +74,7 @@ namespace ExportWadLol.IO.WAD
             this.FileRedirection = fileRedirection;
         }
 
-        /// <summary>
-        /// Reads a <see cref="WADEntry"/> from a <see cref="BinaryReader"/>
-        /// </summary>
-        /// <param name="wad"><see cref="WADFile"/> this new entry belongs to.</param>
-        /// <param name="br">The <see cref="BinaryReader"/> to read from</param>
-        /// <param name="major">Major version of the <see cref="WADFile"/> which is being read</param>
+       
         public WADEntry(WADFile wad, BinaryReader br, byte major)
         {
             this._wad = wad;
@@ -150,10 +99,6 @@ namespace ExportWadLol.IO.WAD
             }
         }
 
-        /// <summary>
-        /// Replaces this <see cref="WADEntry"/>'s data
-        /// </summary>
-        /// <param name="data"></param>
         public void EditData(byte[] data)
         {
             if (this.Type == EntryType.FileRedirection)
@@ -181,10 +126,6 @@ namespace ExportWadLol.IO.WAD
             }
         }
 
-        /// <summary>
-        /// Replaces this <see cref="WADEntry"/>'s file redirection data
-        /// </summary>
-        /// <param name="stringData"></param>
         public void EditData(string stringData)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -201,9 +142,6 @@ namespace ExportWadLol.IO.WAD
             this.SHA = new byte[8];
         }
 
-        /// <summary>
-        /// Returns the Data from this <see cref="WADEntry"/>.
-        /// </summary>
         public byte[] GetContent(bool decompress)
         {
             byte[] dataBuffer = this._newData;
@@ -227,11 +165,7 @@ namespace ExportWadLol.IO.WAD
             }
         }
 
-        /// <summary>
-        /// Writes this <see cref="WADEntry"/> into a <see cref="BinaryWriter"/>
-        /// </summary>
-        /// <param name="bw">The <see cref="BinaryWriter"/> to write to</param>
-        /// <param name="major">Which Version this <see cref="WADEntry"/> should be saved as</param>
+       
         public void Write(BinaryWriter bw, uint major)
         {
             bw.Write(this.XXHash);
@@ -247,36 +181,22 @@ namespace ExportWadLol.IO.WAD
             }
         }
 
-        /// <summary>
-        /// Compares two <see cref="WADEntry"/> by looking at the <see cref="XXHash"/> value.
-        /// </summary>
-        /// <param name="other">Other <see cref="WADEntry"/> to compare the current one to.</param>
+      
         public int CompareTo(WADEntry other)
         {
             return this.XXHash.CompareTo(other.XXHash);
         }
     }
 
-    /// <summary>
-    /// Type of a <see cref="WADEntry"/>
-    /// </summary>
     public enum EntryType : byte
     {
-        /// <summary>
-        /// The Data of the <see cref="WADEntry"/> is uncompressed
-        /// </summary>
+
         Uncompressed,
-        /// <summary>
-        /// The Data of the <see cref="WADEntry"/> is compressed with GZip
-        /// </summary>
+      
         Compressed,
-        /// <summary>
-        /// The Data of this <see cref="WADEntry"/> is a file redirection
-        /// </summary>
+     
         FileRedirection,
-        /// <summary>
-        /// The Data of this <see cref="WADEntry"/> is compressed with ZStandard
-        /// </summary>
+       
         ZStandardCompressed
     }
 }
