@@ -1,0 +1,15 @@
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\bin\Release\ExportWadLol.exe.config
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\bin\Release\ExportWadLol.exe
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\bin\Release\ExportWadLol.pdb
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.csprojAssemblyReference.cache
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\MainWindow.g.cs
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\App.g.cs
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol_MarkupCompile.cache
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol_MarkupCompile.lref
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\MainWindow.baml
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.g.resources
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.Properties.Resources.resources
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.csproj.GenerateResource.cache
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.csproj.CoreCompileInputs.cache
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.exe
+C:\Users\giaynhap\source\repos\ExportWadLol\ExportWadLol\obj\Release\ExportWadLol.pdb

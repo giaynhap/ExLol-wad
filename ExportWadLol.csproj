@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE46EE39-239E-4F78-A2B4-D4268794053D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ExportWadLol</RootNamespace>
+    <AssemblyName>ExportWadLol</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Utils\WADHashGenerator.cs" />
+    <Compile Include="Wad\BIN\BINFile.cs" />
+    <Compile Include="Wad\BIN\BINFileAdditionalData.cs" />
+    <Compile Include="Wad\BIN\BINFileContainer.cs" />
+    <Compile Include="Wad\BIN\BINFileEntry.cs" />
+    <Compile Include="Wad\BIN\BINFileMap.cs" />
+    <Compile Include="Wad\BIN\BINFileStructure.cs" />
+    <Compile Include="Wad\BIN\BINFileValue.cs" />
+    <Compile Include="Wad\BIN\BINFileValuePair.cs" />
+    <Compile Include="Wad\BIN\IBINFileValue.cs" />
+    <Compile Include="Wad\Helpers\Attributes\IniPropertyAttribute.cs" />
+    <Compile Include="Wad\Helpers\Compression.cs" />
+    <Compile Include="Wad\Helpers\Cryptography.cs" />
+    <Compile Include="Wad\Helpers\Exceptions.cs" />
+    <Compile Include="Wad\Helpers\Structures\ColorBGRAVector4Byte.cs" />
+    <Compile Include="Wad\Helpers\Structures\ColorRGBAVector4.cs" />
+    <Compile Include="Wad\Helpers\Structures\ColorRGBAVector4Byte.cs" />
+    <Compile Include="Wad\Helpers\Structures\ColorRGBVector3Byte.cs" />
+    <Compile Include="Wad\Helpers\Structures\Quaternion.cs" />
+    <Compile Include="Wad\Helpers\Structures\R3DBoundingBox.cs" />
+    <Compile Include="Wad\Helpers\Structures\R3DBox.cs" />
+    <Compile Include="Wad\Helpers\Structures\R3DMatrix44.cs" />
+    <Compile Include="Wad\Helpers\Structures\R3DSphere.cs" />
+    <Compile Include="Wad\Helpers\Structures\TimeGradient.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector2.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector2Byte.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector3.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector3Byte.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector4.cs" />
+    <Compile Include="Wad\Helpers\Structures\Vector4Byte.cs" />
+    <Compile Include="Wad\Helpers\TextStructureProcessor.cs" />
+    <Compile Include="Wad\Helpers\Utilities.cs" />
+    <Compile Include="Wad\Helpers\XXHash.cs" />
+    <Compile Include="Wad\WADEntry.cs" />
+    <Compile Include="Wad\WADFile.cs" />
+    <Compile Include="ZstdNet\ArraySegmentPtr.cs" />
+    <Compile Include="ZstdNet\CompressionOptions.cs" />
+    <Compile Include="ZstdNet\Compressor.cs" />
+    <Compile Include="ZstdNet\DecompressionOptions.cs" />
+    <Compile Include="ZstdNet\Decompressor.cs" />
+    <Compile Include="ZstdNet\DictBuilder.cs" />
+    <Compile Include="ZstdNet\DynamicDllLoader.cs" />
+    <Compile Include="ZstdNet\ExternMethods.cs" />
+    <Compile Include="ZstdNet\ReturnValueExtensions.cs" />
+    <Compile Include="ZstdNet\ZstdException.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="libzstd.dll" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
